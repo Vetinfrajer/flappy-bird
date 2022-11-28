@@ -1,11 +1,15 @@
-namespace flappy_bird
+ï»¿namespace flappy_bird
 {
     public partial class Form1 : Form
     {
+        int lmao = 5;
         public Form1()
         {
             InitializeComponent();
+            timer2.Start();
+            odpocet.Text = "";
         }
+
         int gravitace = 10;
         int rychlost = 10;
         int skore = 0;
@@ -13,53 +17,96 @@ namespace flappy_bird
         {
             if(e.KeyCode == Keys.Space)
             { 
-            gravitace= 20;
+            gravitace= 10;
             }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
-            gravitace = -20;
+            gravitace = -15;
             
-            else if (e.KeyCode == Keys.Enter)
-                timer1.Start();
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
+
+            //  inicializace
             Random rnd = new Random();
             ptacek.Top += gravitace;
             pipeDown.Left -= rychlost;
             pipeUP.Left -= rychlost;
-            labelskore.Text = "Skóre: " + skore;
-            //poèítání skóre
-            if (pipeDown.Left < -185)
+            labelskore.Text = $"SkÃ³re {skore}";
+
+
+            //  poÄÃ­tÃ¡nÃ­ skÃ³re
+            if (pipeDown.Right<1) 
             { 
-                pipeDown.Left = rnd.Next(100, 600);
+                pipeDown.Left = rnd.Next(400, 500);
+                pipeDown.Height = rnd.Next(100, 200);
+                skore++;
+                
+            }
+            if(pipeUP.Right <1)
+            {
+                pipeUP.Left = rnd.Next(380, 550);
                 skore++;
             }
-            if(pipeUP.Left <- 185)
-            {
-                pipeUP.Left = rnd.Next(300, 850);
-                skore++;
-            }
-            if(ptacek.Bounds.IntersectsWith(pipeUP.Bounds) || ptacek.Bounds.IntersectsWith(pipeDown.Bounds) || ptacek.Bounds.IntersectsWith(zem.Bounds))
-            {
-                timer1.Stop();
-                MessageBox.Show("Konec hry!", "Prohrál/a jste",  MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            rychlost = 10 + skore;
-            
-                /*
-                if(rychlost >30)
-                    rychlost += 1;
-                else if(rychlost > 50)
-                    rychlost += 0,2;
-                else if (rychlost > 100)
-                    rychlost += 0,05;*/
+
+
+
+            //  kolize
+            if (ptacek.Bounds.IntersectsWith(pipeUP.Bounds) ||
+                ptacek.Bounds.IntersectsWith(pipeDown.Bounds) || 
+                ptacek.Bounds.IntersectsWith(zem.Bounds))
+                konecHry();
+
+
+            //  Å™eÅ¡enÃ­ rychlosti
+            if(rychlost<15)
+                rychlost +=(5/10);
+
+            else if (rychlost > 15)
+                rychlost += (7/10);
+            else if(rychlost>20)
+                rychlost -= (4/10);
+            else if(rychlost>30)
+                rychlost -= (1/10);
+
             
 
+        }
+        private void konecHry()
+        {
+           
+                timer1.Stop();
+                DialogResult dr = MessageBox.Show("Konec hry!"
+                    , "ProhrÃ¡l/a jste", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+
+                if (dr == DialogResult.OK)
+                {
+                
+                Menu menu = new Menu();
+                menu.Show();
+                this.Hide();
+
+            }
+
+            
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+
+            odpocet.Text = $"{lmao}...";
+            lmao--;
+
+            if(lmao==0)
+            {
+                timer2.Stop();
+                timer1.Start();
+                odpocet.Visible = false;
+            }
         }
     }
 }
