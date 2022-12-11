@@ -3,6 +3,8 @@
     public partial class Form1 : Form
     {
         int lmao = 5;
+
+        Menu menu = new Menu();
         public Form1()
         {
             InitializeComponent();
@@ -36,19 +38,15 @@
             pipeDown.Left -= rychlost;
             pipeUP.Left -= rychlost;
             labelskore.Text = $"Skóre {skore}";
+            int pozice = rnd.Next(400, 800);
 
-
-            //  počítání skóre
+            //  počítání skóre & generování pozic překážkám
             if (pipeDown.Right<1) 
-            { 
-                pipeDown.Left = rnd.Next(400, 500);
-                pipeDown.Height = rnd.Next(100, 200);
-                skore++;
-                
-            }
-            if(pipeUP.Right <1)
             {
-                pipeUP.Left = rnd.Next(380, 550);
+                pipeDown.Left = pozice;
+
+                pipeUP.Left = pozice;
+                
                 skore++;
             }
 
@@ -72,25 +70,30 @@
             else if(rychlost>30)
                 rychlost -= (1/10);
 
-            
+
+
 
         }
         private void konecHry()
         {
-           
-                timer1.Stop();
+
+            //Label bestscore = menu.Controls["bestscore"] as Label;
+
+            timer1.Stop();
                 DialogResult dr = MessageBox.Show("Konec hry!"
                     , "Prohrál/a jste", MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
-
+            
+               // bestscore.Text = $"{skore}";
+            
                 if (dr == DialogResult.OK)
                 {
                 
-                Menu menu = new Menu();
                 menu.Show();
+
                 this.Hide();
 
-            }
+                }
 
             
         }
