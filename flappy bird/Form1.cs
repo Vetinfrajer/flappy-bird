@@ -60,14 +60,14 @@
 
 
             //  řešení rychlosti
-            if(rychlost<15)
+            if(skore<7)
                 rychlost +=(5/10);
 
-            else if (rychlost > 15)
+            else if (skore > 15)
                 rychlost += (7/10);
-            else if(rychlost>20)
+            else if(skore>20)
                 rychlost -= (4/10);
-            else if(rychlost>30)
+            else if(skore>30)
                 rychlost -= (1/10);
 
 

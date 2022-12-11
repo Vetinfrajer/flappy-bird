@@ -64,5 +64,7 @@ namespace flappy_bird
             hra.Show();
             this.Hide();
         }
+
+       
     }
 }
