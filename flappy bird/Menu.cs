@@ -21,6 +21,18 @@ namespace flappy_bird
             InitializeComponent();
                 timer1.Start();
             pictureBox1.Top = pozice;
+            int skore = 0;
+            using (FileStream fs = new FileStream("../../skore.txt", FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    skore = int.Parse(sr.ReadLine());
+                    if (skore > Convert.ToInt32(bestskore.Text))
+                        bestskore.Text = skore.ToString();
+                   
+                    
+                }
+            }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {

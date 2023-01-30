@@ -76,15 +76,18 @@
         }
         private void konecHry()
         {
-
-            //Label bestscore = menu.Controls["bestscore"] as Label;
-
-            timer1.Stop();
+            using (FileStream fs = new FileStream("../../skore.txt",FileMode.Open))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(skore);
+                }
+            }
+                timer1.Stop();
                 DialogResult dr = MessageBox.Show("Konec hry!"
                     , "Prohrál/a jste", MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
             
-               // bestscore.Text = $"{skore}";
             
                 if (dr == DialogResult.OK)
                 {
