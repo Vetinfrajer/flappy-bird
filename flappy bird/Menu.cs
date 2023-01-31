@@ -21,18 +21,7 @@ namespace flappy_bird
             InitializeComponent();
                 timer1.Start();
             pictureBox1.Top = pozice;
-            int skore = 0;
-            using (FileStream fs = new FileStream("../../skore.txt", FileMode.Open))
-            {
-                using (StreamReader sr = new StreamReader(fs))
-                {
-                    skore = int.Parse(sr.ReadLine());
-                    if (skore > Convert.ToInt32(bestskore.Text))
-                        bestskore.Text = skore.ToString();
-                   
-                    
-                }
-            }
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -58,10 +47,6 @@ namespace flappy_bird
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(1);
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -77,6 +62,36 @@ namespace flappy_bird
             this.Hide();
         }
 
-       
+        private void button3_Click(object sender, EventArgs e)
+        {
+           Close();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            int skore = 0;
+            using (FileStream fs = new FileStream("../../skore.txt", FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    try
+                    {
+                        skore = int.Parse(sr.ReadLine());
+                        if (skore > Convert.ToInt32(bestskore.Text))
+                            bestskore.Text = skore.ToString();
+
+                    }
+                    catch
+                    {
+                        using (StreamWriter sw = new StreamWriter(fs))
+                        {
+                            sw.WriteLine(0);
+                        }
+                    }
+
+
+                }
+            }
+        }
     }
 }

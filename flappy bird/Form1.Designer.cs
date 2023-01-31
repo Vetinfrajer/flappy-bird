@@ -37,16 +37,24 @@
             this.labelskore = new System.Windows.Forms.Label();
             this.odpocet = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptacek)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeUP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // ptacek
             // 
             this.ptacek.Image = global::flappy_bird.Properties.Resources.Flappy_Bird2;
-            this.ptacek.Location = new System.Drawing.Point(3, 157);
+            this.ptacek.Location = new System.Drawing.Point(50, 157);
             this.ptacek.Name = "ptacek";
             this.ptacek.Size = new System.Drawing.Size(80, 80);
             this.ptacek.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -71,7 +79,7 @@
             // pipeDown
             // 
             this.pipeDown.Image = global::flappy_bird.Properties.Resources.pipe_down;
-            this.pipeDown.Location = new System.Drawing.Point(366, -2);
+            this.pipeDown.Location = new System.Drawing.Point(293, -4);
             this.pipeDown.Name = "pipeDown";
             this.pipeDown.Size = new System.Drawing.Size(80, 146);
             this.pipeDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -81,7 +89,7 @@
             // pipeUP
             // 
             this.pipeUP.Image = global::flappy_bird.Properties.Resources.pipe_up;
-            this.pipeUP.Location = new System.Drawing.Point(366, 290);
+            this.pipeUP.Location = new System.Drawing.Point(293, 292);
             this.pipeUP.Name = "pipeUP";
             this.pipeUP.Size = new System.Drawing.Size(80, 207);
             this.pipeUP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -104,7 +112,7 @@
             // 
             this.odpocet.AutoSize = true;
             this.odpocet.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.odpocet.Location = new System.Drawing.Point(170, 157);
+            this.odpocet.Location = new System.Drawing.Point(221, 157);
             this.odpocet.Name = "odpocet";
             this.odpocet.Size = new System.Drawing.Size(88, 86);
             this.odpocet.TabIndex = 7;
@@ -116,12 +124,56 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::flappy_bird.Properties.Resources.pipe_down;
+            this.pictureBox1.Location = new System.Drawing.Point(543, -4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 279);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::flappy_bird.Properties.Resources.pipe_up;
+            this.pictureBox2.Location = new System.Drawing.Point(543, 415);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(80, 84);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::flappy_bird.Properties.Resources.pipe_up;
+            this.pictureBox3.Location = new System.Drawing.Point(722, 292);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(80, 207);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 10;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::flappy_bird.Properties.Resources.pipe_down;
+            this.pictureBox4.Location = new System.Drawing.Point(722, 12);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(80, 146);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 11;
+            this.pictureBox4.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(621, 571);
+            this.ClientSize = new System.Drawing.Size(595, 574);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.odpocet);
             this.Controls.Add(this.labelskore);
             this.Controls.Add(this.pipeUP);
@@ -140,6 +192,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.zem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeUP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,5 +212,9 @@
         private Label labelskore;
         private Label odpocet;
         private System.Windows.Forms.Timer timer2;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox4;
     }
 }

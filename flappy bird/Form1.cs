@@ -37,17 +37,39 @@
             ptacek.Top += gravitace;
             pipeDown.Left -= rychlost;
             pipeUP.Left -= rychlost;
+            pictureBox1.Left -= rychlost;
+            pictureBox2.Left -= rychlost;
             labelskore.Text = $"Skóre {skore}";
-            int pozice = rnd.Next(400, 800);
+            int pozice = rnd.Next(400, 1040);
 
             //  počítání skóre & generování pozic překážkám
             if (pipeDown.Right<1) 
             {
                 pipeDown.Left = pozice;
-
                 pipeUP.Left = pozice;
-                
                 skore++;
+            }
+            if(pictureBox1.Right<1)
+            {
+                pictureBox1.Left = pozice;
+                pictureBox2.Left = pozice;
+                skore++;
+            }
+            if(pictureBox3.Right<1)
+            {
+                pictureBox3.Left = pozice;
+                pictureBox4.Left = pozice;  
+                skore++;
+            }
+            if (pictureBox2.Left-pipeDown.Right<100)
+            {
+                pictureBox2.Left = pozice+(100-pictureBox2.Left);
+                pictureBox1.Left = pozice + (100 - pictureBox2.Left);
+            }
+            if(pictureBox3.Left - pictureBox2.Left < 100)
+            {
+                pictureBox3.Left = pozice+ (100-pictureBox3.Left);
+                pictureBox4.Left = pozice + (100 - pictureBox3.Left);
             }
 
 
@@ -60,14 +82,14 @@
 
 
             //  řešení rychlosti
-            if(skore<7)
-                rychlost +=(5/10);
+            if(skore<3)
+                rychlost +=(1/2);
 
-            else if (skore > 15)
+            else if (skore > 5)
                 rychlost += (7/10);
-            else if(skore>20)
+            else if(skore>15)
                 rychlost -= (4/10);
-            else if(skore>30)
+            else if(skore>21)
                 rychlost -= (1/10);
 
 
@@ -94,7 +116,7 @@
                 
                 menu.Show();
 
-                this.Hide();
+                Close();
 
                 }
 
