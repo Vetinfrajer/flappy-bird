@@ -49,12 +49,32 @@ namespace flappy_bird
                 pipeDown.Left = 1000;
                 pipeUP.Left = 1000;
                 skore++;
+
+                //  řešení rychlosti
+                if (skore < 3)
+                    rychlost += (1 / 2);
+                else if (skore > 5)
+                    rychlost += (7 / 10);
+                else if (skore > 15)
+                    rychlost -= (4 / 10);
+                else if (skore > 21)
+                    rychlost -= (1 / 10);
             }
             if(pictureBox1.Right<1)
             {
                 pictureBox1.Left = 1000;
                 pictureBox2.Left = 1000;
                 skore++;
+
+                //  řešení rychlosti
+                if (skore < 3)
+                    rychlost += (1 / 2);
+                else if (skore > 5)
+                    rychlost += (7 / 10);
+                else if (skore > 15)
+                    rychlost -= (4 / 10);
+                else if (skore > 21)
+                    rychlost -= (1 / 10);
             }
 
 
@@ -67,15 +87,7 @@ namespace flappy_bird
                 konecHry();
 
 
-            //  řešení rychlosti
-            if(skore<3)
-                rychlost +=(1/2);
-            else if (skore > 5)
-                rychlost += (7/10);
-            else if(skore>15)
-                rychlost -= (4/10);
-            else if(skore>21)
-                rychlost -= (1/10);
+            
 
 
 
