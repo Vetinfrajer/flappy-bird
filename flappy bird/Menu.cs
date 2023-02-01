@@ -21,8 +21,8 @@ namespace flappy_bird
             InitializeComponent();
                 timer1.Start();
             pictureBox1.Top = pozice;
-            
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -69,29 +69,19 @@ namespace flappy_bird
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            int skore = 0;
-            using (FileStream fs = new FileStream("../../skore.txt", FileMode.Open))
+            string filePath = "../../skore.txt";
+            string lastLine = "";
+
+            using (var sr = new StreamReader(filePath))
             {
-                using (StreamReader sr = new StreamReader(fs))
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    try
-                    {
-                        skore = int.Parse(sr.ReadLine());
-                        if (skore > Convert.ToInt32(bestskore.Text))
-                            bestskore.Text = skore.ToString();
-
-                    }
-                    catch
-                    {
-                        using (StreamWriter sw = new StreamWriter(fs))
-                        {
-                            sw.WriteLine(0);
-                        }
-                    }
-
-
+                    lastLine = line;
                 }
             }
+            bestskore.Text = lastLine;
+        }
         }
     }
-}
+

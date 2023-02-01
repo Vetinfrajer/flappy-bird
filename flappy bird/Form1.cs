@@ -1,4 +1,6 @@
-﻿namespace flappy_bird
+﻿using System.Security;
+
+namespace flappy_bird
 {
     public partial class Form1 : Form
     {
@@ -40,51 +42,34 @@
             pictureBox1.Left -= rychlost;
             pictureBox2.Left -= rychlost;
             labelskore.Text = $"Skóre {skore}";
-            int pozice = rnd.Next(400, 1040);
 
             //  počítání skóre & generování pozic překážkám
             if (pipeDown.Right<1) 
             {
-                pipeDown.Left = pozice;
-                pipeUP.Left = pozice;
+                pipeDown.Left = 1000;
+                pipeUP.Left = 1000;
                 skore++;
             }
             if(pictureBox1.Right<1)
             {
-                pictureBox1.Left = pozice;
-                pictureBox2.Left = pozice;
+                pictureBox1.Left = 1000;
+                pictureBox2.Left = 1000;
                 skore++;
             }
-            if(pictureBox3.Right<1)
-            {
-                pictureBox3.Left = pozice;
-                pictureBox4.Left = pozice;  
-                skore++;
-            }
-            if (pictureBox2.Left-pipeDown.Right<100)
-            {
-                pictureBox2.Left = pozice+(100-pictureBox2.Left);
-                pictureBox1.Left = pozice + (100 - pictureBox2.Left);
-            }
-            if(pictureBox3.Left - pictureBox2.Left < 100)
-            {
-                pictureBox3.Left = pozice+ (100-pictureBox3.Left);
-                pictureBox4.Left = pozice + (100 - pictureBox3.Left);
-            }
-
 
 
             //  kolize
             if (ptacek.Bounds.IntersectsWith(pipeUP.Bounds) ||
                 ptacek.Bounds.IntersectsWith(pipeDown.Bounds) || 
-                ptacek.Bounds.IntersectsWith(zem.Bounds))
+                ptacek.Bounds.IntersectsWith(zem.Bounds) || 
+                ptacek.Bounds.IntersectsWith(pictureBox1.Bounds) ||
+                ptacek.Bounds.IntersectsWith(pictureBox2.Bounds))
                 konecHry();
 
 
             //  řešení rychlosti
             if(skore<3)
                 rychlost +=(1/2);
-
             else if (skore > 5)
                 rychlost += (7/10);
             else if(skore>15)
@@ -98,16 +83,24 @@
         }
         private void konecHry()
         {
-            using (FileStream fs = new FileStream("../../skore.txt",FileMode.Open))
+            timer1.Stop();
+            int best;
+
+            using (FileStream fs = new FileStream("../../skore.txt",FileMode.OpenOrCreate))
             {
-                using (StreamWriter sw = new StreamWriter(fs))
+                using (StreamReader sr = new StreamReader(fs))
                 {
-                    sw.WriteLine(skore);
+                    best = Convert.ToInt32(sr.ReadLine());
+                    if(best < skore)
+                    {
+                        best = skore;
+                        using (StreamWriter sw = new StreamWriter(fs))
+                            sw.WriteLine(best);
+                    }
                 }
             }
-                timer1.Stop();
                 DialogResult dr = MessageBox.Show("Konec hry!"
-                    , "Prohrál/a jste", MessageBoxButtons.OK, 
+                    , "Prohrál/a jste", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             
             
