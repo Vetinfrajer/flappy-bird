@@ -51,7 +51,7 @@
             // 
             this.ptacek.Image = global::flappy_bird.Properties.Resources.Flappy_Bird2;
             this.ptacek.Location = new System.Drawing.Point(93, 335);
-            this.ptacek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ptacek.Margin = new System.Windows.Forms.Padding(6);
             this.ptacek.Name = "ptacek";
             this.ptacek.Size = new System.Drawing.Size(149, 171);
             this.ptacek.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -62,7 +62,7 @@
             // 
             this.zem.Image = global::flappy_bird.Properties.Resources.R;
             this.zem.Location = new System.Drawing.Point(-50, 1060);
-            this.zem.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.zem.Margin = new System.Windows.Forms.Padding(6);
             this.zem.Name = "zem";
             this.zem.Size = new System.Drawing.Size(1207, 171);
             this.zem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -78,7 +78,7 @@
             // 
             this.pipeDown.Image = global::flappy_bird.Properties.Resources.pipe_down;
             this.pipeDown.Location = new System.Drawing.Point(544, -9);
-            this.pipeDown.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pipeDown.Margin = new System.Windows.Forms.Padding(6);
             this.pipeDown.Name = "pipeDown";
             this.pipeDown.Size = new System.Drawing.Size(149, 311);
             this.pipeDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -89,7 +89,7 @@
             // 
             this.pipeUP.Image = global::flappy_bird.Properties.Resources.pipe_up;
             this.pipeUP.Location = new System.Drawing.Point(544, 623);
-            this.pipeUP.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pipeUP.Margin = new System.Windows.Forms.Padding(6);
             this.pipeUP.Name = "pipeUP";
             this.pipeUP.Size = new System.Drawing.Size(149, 442);
             this.pipeUP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -129,8 +129,8 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::flappy_bird.Properties.Resources.pipe_down;
-            this.pictureBox1.Location = new System.Drawing.Point(1075, -9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(1075, -89);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(149, 595);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -140,10 +140,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::flappy_bird.Properties.Resources.pipe_up;
-            this.pictureBox2.Location = new System.Drawing.Point(1075, 886);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox2.Location = new System.Drawing.Point(1075, 834);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(149, 179);
+            this.pictureBox2.Size = new System.Drawing.Size(149, 231);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
@@ -163,7 +163,7 @@
             this.Controls.Add(this.zem);
             this.Controls.Add(this.ptacek);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

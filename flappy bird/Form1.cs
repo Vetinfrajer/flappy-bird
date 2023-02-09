@@ -54,11 +54,7 @@ namespace flappy_bird
                 if (skore < 3)
                     rychlost += (1 / 2);
                 else if (skore > 5)
-                    rychlost += (7 / 10);
-                else if (skore > 15)
-                    rychlost -= (4 / 10);
-                else if (skore > 21)
-                    rychlost -= (1 / 10);
+                    rychlost += 1;
             }
             if(pictureBox1.Right<1)
             {
@@ -70,11 +66,7 @@ namespace flappy_bird
                 if (skore < 3)
                     rychlost += (1 / 2);
                 else if (skore > 5)
-                    rychlost += (7 / 10);
-                else if (skore > 15)
-                    rychlost -= (4 / 10);
-                else if (skore > 21)
-                    rychlost -= (1 / 10);
+                    rychlost += 1;
             }
 
 
@@ -102,7 +94,7 @@ namespace flappy_bird
             {
                 using (StreamReader sr = new StreamReader(fs))
                 {
-                    best = Convert.ToInt32(sr.ReadLine());
+                    best = Convert.ToInt32(sr.ReadLine().Last());
                     if(best < skore)
                     {
                         best = skore;
