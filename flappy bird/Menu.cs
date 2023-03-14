@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace flappy_bird
         {
 
             InitializeComponent();
-                timer1.Start();
+            timer1.Start();
             pictureBox1.Top = pozice;
         }
 
@@ -32,7 +33,7 @@ namespace flappy_bird
                     xd = false;
 
                 pictureBox1.Top++;
-            
+
             }
             else
             {
@@ -51,7 +52,7 @@ namespace flappy_bird
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Držením mezerníku se dostanete výš\n " +
-                "ptáček začne padat jakmile pustíte mezerník", "Ovládání", 
+                "ptáček začne padat jakmile pustíte mezerník", "Ovládání",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -64,24 +65,32 @@ namespace flappy_bird
 
         private void button3_Click(object sender, EventArgs e)
         {
-           Close();
+            Close();
         }
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            string filePath = "../../skore.txt";
-            string lastLine = "";
+            string path = "../../skore.txt";
 
-            using (var sr = new StreamReader(filePath))
+            // kontrola, zda soubor existuje
+            if (!File.Exists(path))
             {
-                string line;
-                while ((line = sr.ReadLine()) != null)
+                // vytvoření souboru a zápis 0
+                using (StreamWriter writer = new StreamWriter(path))
                 {
-                    lastLine = line;
+                    writer.WriteLine("0");
                 }
             }
+
+            // přečtení poslední řádky ze souboru
+            string lastLine = File.ReadLines(path).Last();
+
+            // zápis posledního řádku do labelu
             bestskore.Text = lastLine;
-        }
+
+
+
         }
     }
+}
 

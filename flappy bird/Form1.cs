@@ -19,17 +19,17 @@ namespace flappy_bird
         int skore = 0;
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Space)
-            { 
-            gravitace= 10;
+            if (e.KeyCode == Keys.Space)
+            {
+                gravitace = 10;
             }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
-            gravitace = -15;
-            
+                gravitace = -15;
+
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -44,42 +44,59 @@ namespace flappy_bird
             labelskore.Text = $"Skóre {skore}";
 
             //  počítání skóre & generování pozic překážkám
-            if (pipeDown.Right<1) 
+            if (pipeDown.Right < 1)
             {
                 pipeDown.Left = 1000;
                 pipeUP.Left = 1000;
                 skore++;
 
+                Random poz = new Random();
+                int poz2 = poz.Next(200, 375);
+                int poz3 = 750 - poz2;
+
+                pipeDown.Height = poz2;
+                pipeUP.Height = poz3;
+
+
+
                 //  řešení rychlosti
                 if (skore < 3)
                     rychlost += (1 / 2);
                 else if (skore > 5)
                     rychlost += 1;
             }
-            if(pictureBox1.Right<1)
+            if (pictureBox1.Right < 1)
             {
                 pictureBox1.Left = 1000;
                 pictureBox2.Left = 1000;
                 skore++;
 
+                //řešení výšek překážek
+                Random poz = new Random();
+                int poz2 = poz.Next(200, 375);
+                int poz3 = 750 - poz2;
+
+                pictureBox1.Height = poz2;
+                pictureBox2.Height = poz3;
+
                 //  řešení rychlosti
                 if (skore < 3)
-                    rychlost += (1 / 2);
-                else if (skore > 5)
                     rychlost += 1;
+                else if (skore > 5)
+                    rychlost += (1 / 2);
             }
 
 
             //  kolize
             if (ptacek.Bounds.IntersectsWith(pipeUP.Bounds) ||
-                ptacek.Bounds.IntersectsWith(pipeDown.Bounds) || 
-                ptacek.Bounds.IntersectsWith(zem.Bounds) || 
+                ptacek.Bounds.IntersectsWith(pipeDown.Bounds) ||
+                ptacek.Bounds.IntersectsWith(zem.Bounds) ||
                 ptacek.Bounds.IntersectsWith(pictureBox1.Bounds) ||
                 ptacek.Bounds.IntersectsWith(pictureBox2.Bounds))
                 konecHry();
 
 
-            
+
 
 
 
@@ -88,36 +105,52 @@ namespace flappy_bird
         private void konecHry()
         {
             timer1.Stop();
-            int best;
 
-            using (FileStream fs = new FileStream("../../skore.txt",FileMode.OpenOrCreate))
+            // získání cesty k souboru
+            string path = "../../skore.txt";
+
+            // přečtení poslední řádky ze souboru
+            string lastLine = File.ReadLines(path).Last();
+
+            // konverze řetězce na číslo
+            int lastScore = int.Parse(lastLine);
+
+            // porovnání s hodnotou proměnné skore
+            if (skore > lastScore)
             {
-                using (StreamReader sr = new StreamReader(fs))
-                {
-                    best = Convert.ToInt32(sr.ReadLine().Last());
-                    if(best < skore)
-                    {
-                        best = skore;
-                        using (StreamWriter sw = new StreamWriter(fs))
-                            sw.WriteLine(best);
-                    }
-                }
+                // přepsání hodnoty v souboru hodnotou skore
+                string[] lines = File.ReadAllLines(path);
+                lines[lines.Length - 1] = skore.ToString();
+                File.WriteAllLines(path, lines);
             }
-                DialogResult dr = MessageBox.Show("Konec hry!"
-                    , "Prohrál/a jste", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            
-            
-                if (dr == DialogResult.OK)
-                {
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+            DialogResult dr = MessageBox.Show("Konec hry!"
+    , "Prohrál/a jste", MessageBoxButtons.OK,
+    MessageBoxIcon.Error);
+
+
+            if (dr == DialogResult.OK)
+            {
+
                 menu.Show();
 
                 Close();
 
-                }
+            }
 
-            
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -126,7 +159,7 @@ namespace flappy_bird
             odpocet.Text = $"{lmao}...";
             lmao--;
 
-            if(lmao==0)
+            if (lmao == 0)
             {
                 timer2.Stop();
                 timer1.Start();
