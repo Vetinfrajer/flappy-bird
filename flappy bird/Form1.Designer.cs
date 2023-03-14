@@ -76,6 +76,7 @@
             // 
             // pipeDown
             // 
+            pipeDown.Anchor = AnchorStyles.Top;
             pipeDown.Image = Properties.Resources.pipe_down;
             pipeDown.Location = new Point(544, -6);
             pipeDown.Margin = new Padding(6);
@@ -87,7 +88,7 @@
             // 
             // pipeUP
             // 
-            pipeUP.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pipeUP.Anchor = AnchorStyles.Bottom;
             pipeUP.Image = Properties.Resources.pipe_up;
             pipeUP.Location = new Point(544, 623);
             pipeUP.Margin = new Padding(6);
@@ -129,6 +130,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top;
             pictureBox1.Image = Properties.Resources.pipe_down;
             pictureBox1.Location = new Point(1075, -6);
             pictureBox1.Margin = new Padding(6);
@@ -140,7 +142,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox2.Anchor = AnchorStyles.Bottom;
             pictureBox2.Image = Properties.Resources.pipe_up;
             pictureBox2.Location = new Point(1075, 834);
             pictureBox2.Margin = new Padding(6);
