@@ -46,13 +46,13 @@ namespace flappy_bird
             //  počítání skóre & generování pozic překážkám
             if (pipeDown.Right < 1)
             {
-                pipeDown.Left = 1000;
-                pipeUP.Left = 1000;
+                pipeDown.Left = 700;
+                pipeUP.Left = 700;
                 skore++;
 
                 Random poz = new Random();
-                int poz2 = poz.Next(200, 375);
-                int poz3 = 750 - poz2;
+                int poz2 = poz.Next(160, 300);
+                int poz3 = 800 - poz2;
 
                 pipeDown.Height = poz2;
                 pipeUP.Height = poz3;
@@ -67,14 +67,14 @@ namespace flappy_bird
             }
             if (pictureBox1.Right < 1)
             {
-                pictureBox1.Left = 1000;
-                pictureBox2.Left = 1000;
+                pictureBox1.Left = 700;
+                pictureBox2.Left = 700;
                 skore++;
 
                 //řešení výšek překážek
                 Random poz = new Random();
-                int poz2 = poz.Next(200, 375);
-                int poz3 = 750 - poz2;
+                int poz2 = poz.Next(160, 300);
+                int poz3 = 800 - poz2;
 
                 pictureBox1.Height = poz2;
                 pictureBox2.Height = poz3;
@@ -166,5 +166,7 @@ namespace flappy_bird
                 odpocet.Visible = false;
             }
         }
+
+       
     }
 }
